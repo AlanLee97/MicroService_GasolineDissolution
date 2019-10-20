@@ -1,7 +1,6 @@
 package com.match.controller;
 
-import com.match.entity.ResultStatusEnum;
-import com.match.exception.CustomException;
+import com.match.exception.ParameterException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +16,7 @@ public class ApiController {
 
     @RequestMapping("/test")
     public void test(){
-        throw new CustomException(ResultStatusEnum.PARAMETER_NOT_MATCHING);
+        throw new ParameterException();
     }
 
 }

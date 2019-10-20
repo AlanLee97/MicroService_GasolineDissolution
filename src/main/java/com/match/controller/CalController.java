@@ -2,13 +2,10 @@ package com.match.controller;
 
 import com.match.entity.Api;
 import com.match.entity.Data;
-import com.match.entity.ResultStatusEnum;
-import com.match.exception.CustomException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
@@ -31,38 +28,33 @@ public class CalController {
     @GetMapping("/rtnApi")
     @ResponseBody
     public Api calculate(double T, double P, double delta0, double deltag){
-        try {
-            //溶解汽油比
-            double Rs = 0.0;
 
-            //分子
-            double molecular = 0.0;
-            //分母
-            double denominator = 0.0;
+        //溶解汽油比
+        double Rs = 0.0;
 
-            //两个公式中相同的部分
-            double temp1 = Math.log10((118.69 * P * deltag) / T + 0.891);
-            double temp2 = 141.7 / delta0 - 131.5;
+        //分子
+        double molecular = 0.0;
+        //分母
+        double denominator = 0.0;
 
-            //分子部分
-            molecular = 19554.724 * temp1 * delta0;
+        //两个公式中相同的部分
+        double temp1 = Math.log10((118.69 * P * deltag) / T + 0.891);
+        double temp2 = 141.7 / delta0 - 131.5;
 
-            //分母部分
-            denominator = ((0.826 * temp1 - 1) *
-                    (941.53982 / delta0 + 0.1747 *
-                            Math.pow(temp2,2) - 0.0024 *
-                            Math.pow(temp2,3) - 1496.3849));
-            //结果
-            Rs = molecular / denominator;
+        //分子部分
+        molecular = 19554.724 * temp1 * delta0;
 
-            System.out.println(Rs);
-            String note = "溶解油气比";
-            return new Api(200, "ok", new Data(Rs, note));
+        //分母部分
+        denominator = ((0.826 * temp1 - 1) *
+                (941.53982 / delta0 + 0.1747 *
+                        Math.pow(temp2,2) - 0.0024 *
+                        Math.pow(temp2,3) - 1496.3849));
+        //结果
+        Rs = molecular / denominator;
 
-        } catch (Exception e) {
-            System.out.println("发生错误：" + e.getMessage());
-            throw new CustomException(ResultStatusEnum.PARAMETER_NOT_MATCHING);
-        }
+        System.out.println(Rs);
+        String note = "溶解油气比";
+        return new Api(200, "ok", new Data(Rs, note));
     }
 
 }

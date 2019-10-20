@@ -1,6 +1,5 @@
 package com.match.exception;
 
-import com.match.entity.ResultStatusEnum;
 import lombok.Getter;
 
 /**

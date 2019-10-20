@@ -58,7 +58,7 @@
             <div class="col-md-1 col-lg-1 col-sm-1"> </div>
             <div class="col-md-10 col-lg-10 col-sm-10">
                 <div class="show-box-card">
-                    <img src="../image/formula.png" alt="公式" width="100%" height="100%">
+                    <img th:src="@{/image/formula.png}" alt="公式" width="100%" height="100%">
                 </div>
                 <br><br>
             </div>
@@ -78,32 +78,32 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">&nbsp;T&nbsp;</span>
                             </div>
-                            <input name="T" type="text" class="form-control" placeholder="温度" aria-label="温度" aria-describedby="basic-addon1">
+                            <input id="T" name="T" type="text" class="form-control" placeholder="温度" aria-label="温度" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="form-group input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2">&nbsp;P&nbsp;</span>
                             </div>
-                            <input name="P" type="text" class="form-control" placeholder="绝对压力" aria-label="绝对压力" aria-describedby="basic-addon1">
+                            <input id="P" name="P" type="text" class="form-control" placeholder="绝对压力" aria-label="绝对压力" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="form-group input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">&Delta;<sub>g</sub></span>
                             </div>
-                            <input name="deltag" type="text" class="form-control" placeholder="天然气对空气的相对密度" aria-label="天然气对空气的相对密度" aria-describedby="basic-addon1">
+                            <input id="deltag" name="deltag" type="text" class="form-control" placeholder="天然气对空气的相对密度" aria-label="天然气对空气的相对密度" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="form-group input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon4">&Delta;<sub>0</sub></span>
                             </div>
-                            <input name="delta0" type="text" class="form-control" placeholder="脱气原油对水的相对密度" aria-label="脱气原油对水的相对密度" aria-describedby="basic-addon1">
+                            <input id="delta0" name="delta0" type="text" class="form-control" placeholder="脱气原油对水的相对密度" aria-label="脱气原油对水的相对密度" aria-describedby="basic-addon1">
                         </div>
 
                         <center>
-                            <input class="btn btn-primary my-btn" type="button" onclick="validate()" value="提 交">
+                            <input class="btn btn-primary my-btn" type="button" onclick="validate()" value="计 算">
                         </center>
 
 
@@ -196,10 +196,13 @@
         let deltag = $("#deltag").val();
         let delta0 = $("#delta0").val();
 
-        if (T==''||P==''||deltag==''||delta0==''){
+        console.log("T=" + T);
+
+        if (T == '' || P == '' || deltag == '' || delta0 == ''){
             alert("请填写完整表单内容");
         } else {
             cal_ajax2();
+            //alert("发送请求");
         }
     }
 </script>
