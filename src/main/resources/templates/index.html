@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/lib/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/lib/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.bundle.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.js}"></script>
+
+    <title>首页</title>
+
+</head>
+<body class="bg-img">
+
+<!--******************** 头部：开始 ***********************-->
+<section id="index-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <strong class="navbar-brand nav-font text-primary">UnKnown</strong>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-font">
+                <li class="nav-item active text-primary">
+                    <a id="nav-index" class="nav-link " href="/index">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-cal" class="nav-link my-nav-link" href="/cal">计算</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-api" class="nav-link my-nav-link" href="/api">Api</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<!---------------------- 头部：结束 ------------------------>
+
+
+
+
+
+<!--******************** 身体：开始 ***********************-->
+<section id="index-body">
+    <div class="jumbotron box bg-transparent jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <h1 class="display-3 text-white">计算溶解油气比</h1>
+                <p class="lead text-white">
+                    天然气在原油中的溶解度是评价油气溶解性的重要参数之一，在工程上需查取图版而得到，结果不够准确、使用不太
+                    方便，不适于现场快速应用。
+
+                    <br><br>
+                    为了便于在实际工程中快速准确地计算该参数，在雷萨特的模型上将美国石油协会相对密度与脱气原
+                    油摩尔质量的图版进行取点拟合成函数关系，结合原雷萨特关系式将其数学模型归纳推理得到一个新模型，只需要代入绝对压力、
+                    温度、脱气原油对水的相对密度以及天然气对空气的相对密度 4 个已知参数，通过计算机便可快速计算出溶解油气比。
+
+                    <br><br>
+                    研究结果表明：
+                    <br>
+                    ①较之于雷萨特相关式，新模型简化了繁琐的迭代，不仅可以一步到位计算溶解油气比，而且还可以从公式中反映出各个参数是如
+                    何影响溶解油气比的 ；
+                    <br>
+                    ②油气比随着绝对压力的增大而增大、随着温度的增大而减小、随着脱气原油对水相对密度的增大先增大后
+                    减小、随着天然气对空气相对密度的增大而减小。
+
+                    <br><br>
+                    结论认为，新模型可以快速、准确地计算出溶解油气比，其计算结果与原雷萨特
+                    模型符合度高 ；新方法提高了工程上计算溶解油气比的效率及准确性，可以推广使用。
+                </p>
+                <hr class="my-4 text-white">
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg float-right" href="/cal" role="button">去计算</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<!---------------------- 身体：结束 ------------------------>
+
+
+
+
+
+
+
+<!--******************** 脚部：开始 ***********************-->
+<section id="index-footer">
+    <div class="my-footer ">
+
+        Copyright © 2019 中山大学新华学院 信息科学学院 2017软件工程
+        <br>
+        李步官 李忠毅 张东源
+        <br>
+        指导老师：黄婉婷
+        <br>
+
+    </div>
+</section>
+<!---------------------- 脚部：结束 ------------------------>
+</body>
+</html>

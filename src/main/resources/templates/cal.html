@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <link rel="stylesheet" th:href="@{/lib/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/lib/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.bundle.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.js}"></script>
+
+    <title>计算</title>
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+<!--******************** 头部：开始 ***********************-->
+<section id="cal-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <strong class="navbar-brand nav-font text-primary">UnKnown</strong>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-font">
+                <li class="nav-item ">
+                    <a id="nav-index" class="nav-link " href="/index">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active text-primary">
+                    <a id="nav-cal" class="nav-link my-nav-link" href="/cal">计算</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-api" class="nav-link my-nav-link" href="/api">Api</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<!---------------------- 头部：结束 ------------------------>
+
+
+
+
+
+<!--******************** 身体：开始 ***********************-->
+<section id="cal-body">
+    <br><br>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-1 col-lg-1 col-sm-1"> </div>
+            <div class="col-md-10 col-lg-10 col-sm-10">
+                <div class="show-box-card">
+                    <img src="../image/formula.png" alt="公式" width="100%" height="100%">
+                </div>
+                <br><br>
+            </div>
+            <div class="col-md-1 col-lg-1 col-sm-1"> </div>
+        </div>
+
+
+        <!--计算＆提示-->
+        <div class="row">
+
+            <div class="col-md-1 col-lg-1 col-sm-1"> </div>
+            <div class="col-md-5 col-lg-5 col-sm-5">
+                <div class="show-box-card">
+                    <form action="" id="cal-form">
+
+                        <div class="form-group input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">&nbsp;T&nbsp;</span>
+                            </div>
+                            <input name="T" type="text" class="form-control" placeholder="温度" aria-label="温度" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="form-group input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2">&nbsp;P&nbsp;</span>
+                            </div>
+                            <input name="P" type="text" class="form-control" placeholder="绝对压力" aria-label="绝对压力" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="form-group input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">&Delta;<sub>g</sub></span>
+                            </div>
+                            <input name="deltag" type="text" class="form-control" placeholder="天然气对空气的相对密度" aria-label="天然气对空气的相对密度" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="form-group input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon4">&Delta;<sub>0</sub></span>
+                            </div>
+                            <input name="delta0" type="text" class="form-control" placeholder="脱气原油对水的相对密度" aria-label="脱气原油对水的相对密度" aria-describedby="basic-addon1">
+                        </div>
+
+                        <center>
+                            <input class="btn btn-primary my-btn" type="button" onclick="validate()" value="提 交">
+                        </center>
+
+
+                    </form>
+
+
+                </div>
+
+                <br><br>
+
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-5">
+                <div class="show-box-card">
+                    <center><h4>Tip</h4></center>
+
+                    <p class="text-muted">参数T：温度，单位K，取值范围273.15~333.15</p>
+                    <p class="text-muted">参数P：绝对压力，单位MPa，取值范围1.0~3.0</p>
+                    <p class="text-muted">参数&Delta;<sub>g</sub>：天然气对空气的相对密度，取值范围0.58~0.62</p>
+                    <p class="text-muted">参数&Delta;<sub>0</sub>：脱气原油对水的相对密度，取值0.8</p>
+                </div>
+            </div>
+            <div class="col-md-1 col-lg-1 col-sm-1"> </div>
+        </div>
+    </div>
+</section>
+<!---------------------- 身体：结束 ------------------------>
+
+
+
+
+
+
+
+<!--******************** 脚部：开始 ***********************-->
+<section id="cal-footer">
+    <div class="my-footer ">
+
+        Copyright © 2019 中山大学新华学院 信息科学学院 2017软件工程
+        <br>
+        李步官 李忠毅 张东源
+        <br>
+        指导老师：黄婉婷
+        <br>
+
+    </div>
+</section>
+<!---------------------- 脚部：结束 ------------------------>
+
+
+
+<!--******************** js：开始 ***********************-->
+<script>
+
+    function cal_ajax() {
+        let url = "/rtnApi";
+
+        //T=293.15&P=1&deltag=0.6&delta0=0.8
+        let data = {
+            T : 293.15,
+            P : 1.0,
+            deltag : 0.6,
+            delta0 : 0.8,
+        };
+        let callback = function (responseText, status) {
+            alert("返回的数据：\n溶解油气比Rs = " + responseText.data.rs + "\n请求的状态：" + status);
+        };
+
+        $.get(url, data, callback);
+
+    }
+
+    //ajax提交表单
+    function cal_ajax2() {
+        let url = "/rtnApi";
+
+        //T=293.15&P=1&deltag=0.6&delta0=0.8
+        let data = $("#cal-form").serialize();
+        let callback = function (responseText, status) {
+            alert("返回的数据：\n溶解油气比Rs = " + responseText.data.rs + "\n请求的状态：" + status);
+        };
+
+        $.get(url, data, callback);
+
+    }
+    
+    //表单验证
+    function validate() {
+        let T = $("#T").val();
+        let P = $("#P").val();
+        let deltag = $("#deltag").val();
+        let delta0 = $("#delta0").val();
+
+        if (T==''||P==''||deltag==''||delta0==''){
+            alert("请填写完整表单内容");
+        } else {
+            cal_ajax2();
+        }
+    }
+</script>
+<!---------------------- js：结束 ------------------------>
+</body>
+</html>

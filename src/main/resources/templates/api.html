@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/lib/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/lib/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.bundle.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.js}"></script>
+    <title>计算</title>
+
+    <style>
+        .show-api{
+            width: 100%;
+            height: auto;
+            background-color: #f5f5f5;
+            border: 1px solid #00c788;
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--******************** 头部：开始 ***********************-->
+<section id="api-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <strong class="navbar-brand nav-font text-primary">UnKnown</strong>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-font">
+                <li class="nav-item active">
+                    <a id="nav-index" class="nav-link " href="/index">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-cal" class="nav-link my-nav-link" href="/cal">计算</a>
+                </li>
+                <li class="nav-item active text-primary">
+                    <a id="nav-api" class="nav-link my-nav-link" href="/api">Api</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+</section>
+
+<!---------------------- 头部：结束 ------------------------>
+
+
+
+
+
+<!--******************** 身体：开始 ***********************-->
+<section id="api-body">
+    <br><br>
+    <center><h2>接口说明</h2></center>
+
+    <div style="margin-top: 50px"></div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+            <div class="col-md-8 col-lg-8 col-sm-10">
+                <p>
+                    <h5 class="text-muted">
+                        接口地址：
+                    </h5>
+                    <span>
+                            http://localhost:8080/rtnApi?T=293.15&P=1.0&deltag=0.6&delta0=0.8
+                    </span>
+                </p>
+                <br>
+
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+            <div class="col-md-8 col-lg-8 col-sm-10">
+                <h5 class="text-muted">请求方式：GET</h5>
+                <br>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+            <div class="col-md-8 col-lg-8 col-sm-10">
+
+                <h5 class="text-muted">参数：</h5>
+
+                <center>
+                    <div class="show-box-card">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">参数名称</th>
+                                <th scope="col">参数类型</th>
+                                <th scope="col">是否必传</th>
+                                <th scope="col">参数说明</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">T</th>
+                                <td>Double</td>
+                                <td>Y</td>
+                                <td>温度，单位K，取值范围273.15~333.15</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">P</th>
+                                <td>Double</td>
+                                <td>Y</td>
+                                <td>绝对压力，单位MPa，取值范围1.0~3.0</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">deltag</th>
+                                <td>Double</td>
+                                <td>Y</td>
+                                <td>天然气对空气的相对密度，取值范围0.58~0.62</td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">delta0</th>
+                                <td>Double</td>
+                                <td>Y</td>
+                                <td>脱气原油对水的相对密度，取值0.8</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+                </center>
+
+                <br>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+        </div>
+
+
+
+        <div class="row ">
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+            <div class="col-md-8 col-lg-8 col-sm-10">
+                <h5 class="text-muted">返回数据：</h5>
+                    <div class="show-box-card">
+                        <pre>
+{
+    "code":200,
+    "msg":"ok",
+    "data":{
+        "note":"溶解油气比",
+        "rs":4.8669238391386
+    }
+}
+                        </pre>
+                    </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-1"> </div>
+        </div>
+    </div>
+</section>
+<!---------------------- 身体：结束 ------------------------>
+
+
+
+
+
+
+
+<!--******************** 脚部：开始 ***********************-->
+<section id="api-footer">
+    <div class="my-footer ">
+
+        Copyright © 2019 中山大学新华学院 信息科学学院 2017软件工程
+        <br>
+        李步官 李忠毅 张东源
+        <br>
+        指导老师：黄婉婷
+        <br>
+
+    </div>
+</section>
+<!---------------------- 脚部：结束 ------------------------>
+
+
+<script>
+
+</script>
+</body>
+</html>
