@@ -7,6 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ApiController {
+    /**
+     * 返回api文档说明页面
+     * @return
+     */
     @RequestMapping("/api")
     public ModelAndView apiView(){
         ModelAndView mv = new ModelAndView();
@@ -14,6 +18,9 @@ public class ApiController {
         return mv;
     }
 
+    /**
+     * 测试自定义异常
+     */
     @RequestMapping("/test")
     public void test(){
         throw new ParameterException();

@@ -2,20 +2,23 @@ package com.match.controller;
 
 import com.match.entity.Api;
 import com.match.entity.Data;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class CalController {
+    /**
+     * 返回计算页面
+     * @return
+     */
     @RequestMapping("/cal")
     public ModelAndView calView(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/cal");
         return mv;
     }
+
+
 
     /**
      * 返回接口数据的api
@@ -25,9 +28,14 @@ public class CalController {
      * @param deltag 天然气对空气的相对密度 取值范围0.58～0.62
      * @return Rs 溶解汽油比
      */
-    @GetMapping("/rtnApi")
+    @RequestMapping(value = "/calculate",
+            method = RequestMethod.GET,
+            produces="application/json; charset=UTF-8")
     @ResponseBody
-    public Api calculate(double T, double P, double delta0, double deltag){
+    public Api calculate(@RequestParam("T") double T,
+                         @RequestParam("P") double P,
+                         @RequestParam("delta0") double delta0,
+                         @RequestParam("deltag") double deltag){
 
         //溶解汽油比
         double Rs = 0.0;

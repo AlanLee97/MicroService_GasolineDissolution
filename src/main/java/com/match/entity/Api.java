@@ -3,6 +3,9 @@ package com.match.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Api实体类
+ */
 public class Api {
     @Setter @Getter
     private int code;
