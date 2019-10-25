@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.MissingServletRequestParameterException;
-
 /**
  * 响应结果状态枚举类
  */
