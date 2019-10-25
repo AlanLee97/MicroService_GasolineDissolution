@@ -18,4 +18,6 @@ public class Data<T> {
         this.Rs = Rs;
         this.note = note;
     }
+
+
 }

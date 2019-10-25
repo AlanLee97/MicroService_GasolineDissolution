@@ -1,5 +1,6 @@
 package com.match.exception;
 
+import com.match.entity.Data;
 import lombok.Getter;
 
 /**
@@ -8,16 +9,19 @@ import lombok.Getter;
 @Getter
 public class CustomException extends RuntimeException {
     private int code;
-    private String message;
+    private String msg;
+    private Data data;
 
-    public CustomException(int code, String message) {
+    public CustomException(int code, String msg, Data data) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
+        this.data = data;
     }
 
     public CustomException(ResultStatusEnum resultStatusEnum) {
         this.code = resultStatusEnum.getCode();
-        this.message = resultStatusEnum.getMessage();
+        this.msg = resultStatusEnum.getMsg();
+        this.data = resultStatusEnum.getData();
     }
 }
 

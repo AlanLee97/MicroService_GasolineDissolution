@@ -16,9 +16,14 @@ import java.util.Map;
 public class MyExceptionController {
 
     public Map<String, Object> handleCustomException(CustomException customException) {
-        Map<String, Object> errorResultMap = new HashMap<>(16);
+        Map<String, Object> errorResultMap = new HashMap<>();
         errorResultMap.put("code", customException.getCode());
-        errorResultMap.put("message", customException.getMessage());
+        errorResultMap.put("msg", customException.getMsg());
+        Map<Object, Object> data = new HashMap<>();
+        data.put("rs",customException.getData().getRs());
+        data.put("note", customException.getData().getNote());
+        errorResultMap.put("data", data);
+
         return errorResultMap;
     }
 
@@ -32,7 +37,7 @@ public class MyExceptionController {
     @ExceptionHandler(value=NumberFormatException.class)
     public ResponseEntity<Object> handleNumberFormatException(NumberFormatException ex) {
         Map<String, Object> map = handleCustomException(new CustomException(ResultStatusEnum.PARAMETER_NOT_MATCHING));
-        return new ResponseEntity(map, HttpStatus.valueOf(500));
+        return new ResponseEntity(map, HttpStatus.valueOf(200));
     }
 
 
@@ -46,7 +51,7 @@ public class MyExceptionController {
     public ResponseEntity<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
         String paramName = ex.getParameterName();
         Map<String, Object> map = handleCustomException(new CustomException(ResultStatusEnum.MISSING_SERVLET_REQUEST_PARAMETER));
-        map.put("message", map.get("message") + paramName);
-        return new ResponseEntity(map, HttpStatus.valueOf(500));
+        map.put("msg", map.get("msg") + paramName);
+        return new ResponseEntity(map, HttpStatus.valueOf(200));
     }
 }

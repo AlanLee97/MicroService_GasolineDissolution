@@ -1,5 +1,6 @@
 package com.match.exception;
 
+import com.match.entity.Data;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +14,11 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 @AllArgsConstructor
 public enum ResultStatusEnum {
 
-    //请求成功
-    SUCCESS(200, "请求成功！"),
-
     //缺少参数错误
-    MISSING_SERVLET_REQUEST_PARAMETER(400, "错误，缺少参数"),
+    MISSING_SERVLET_REQUEST_PARAMETER(400, "错误，缺少参数", new Data(null, "出现错误，无结果")),
 
     //参数非数字类型错误
-    PARAMETER_NOT_MATCHING(400, "错误，参数非数字类型错误");
+    PARAMETER_NOT_MATCHING(400, "错误，参数非数字类型错误", new Data(null, "出现错误，无结果"));
 
 
 
@@ -30,6 +28,10 @@ public enum ResultStatusEnum {
 
     @Getter
     @Setter
-    private String message;
+    private String msg;
+
+    @Getter
+    @Setter
+    private Data data;
 }
 
